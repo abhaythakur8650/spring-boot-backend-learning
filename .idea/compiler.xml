@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="CRUD-operation-using-database" />
+        <module name="mappings" />
+        <module name="learningday2" />
+        <module name="displaying_user" />
+        <module name="hellodemo" />
+        <module name="CRUD_operation_using_arraylist" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="CRUD-operation-using-database" options="-parameters" />
+      <module name="CRUD_operation_using_arraylist" options="-parameters" />
+      <module name="displaying_user" options="-parameters" />
+      <module name="hellodemo" options="-parameters" />
+      <module name="learningday2" options="-parameters" />
+      <module name="mappings" options="-parameters" />
+    </option>
+  </component>
+</project>
