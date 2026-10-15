@@ -1,12 +1,14 @@
 package com.example.CRUD.operation.using.database;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 @Entity
 public class User {
 
     @Id
+    @GeneratedValue
     private int Id;
     private String name;
     private String email;

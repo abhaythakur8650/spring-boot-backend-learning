@@ -1,5 +1,7 @@
 package com.example.CRUD.operation.using.database;
 
+import com.example.CRUD.operation.using.database.DTO.userDTO;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -39,10 +41,25 @@ public class Service {
 
     public User updateuser(int id,User user)
     {
-User existinguser=repository.findById().orElseThrow(()-> new RuntimeException("user not found"));
+User existinguser=repository.findById(id).orElseThrow(()-> new RuntimeException("user not found"));
 
- existinguser.setName(existinguser.getName());
- existinguser.setEmail(existinguser.getEmail());
+ existinguser.setName(user.getName());
+ existinguser.setEmail(user.getEmail());
  return repository.save(existinguser);
+    }
+
+    public User convertToEntity( userDTO dto)
+    {
+        User user =new User();
+        user.setName(dto.getName());
+        user.setEmail(dto.getEmail());
+        return user;
+    }
+    public userDTO converttoDTO(User user)
+    {
+        return new userDTO(user.getId(),
+        user.getName(),
+        user.getEmail());
+
     }
 }

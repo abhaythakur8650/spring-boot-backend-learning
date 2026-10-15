@@ -40,7 +40,7 @@ public class Controller {
     }
 
     @GetMapping("/api/users/{id}")
-    public Optional<User> getById(@PathVariable int id, @RequestBody User user)
+    public Optional<User> getById(@PathVariable int id)
     {
 
        return service.getuser(id);
