@@ -1,5 +1,10 @@
 package com.example.CRUD.operation.using.database;
 
+import com.example.CRUD.operation.using.database.DTO.userDTO;
+
+import jakarta.validation.Valid;
+
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,11 +19,12 @@ public class Controller {
         this.service=service;
     }
 
-    @PostMapping("/api/users")
-    public User saveUser(@RequestBody User user)
-    {
-        return  service.createuser(user);
 
+    @PostMapping("/api/users")
+    public User saveUser(@Valid @RequestBody userDTO userd)
+    {
+        User user=service.convertToEntity(userd);
+        return  service.createuser(user);
     }
 
     @GetMapping("/api/users")
@@ -40,7 +46,7 @@ public class Controller {
     }
 
     @GetMapping("/api/users/{id}")
-    public Optional<User> getById(@PathVariable int id)
+    public User getById(@PathVariable int id)
     {
 
        return service.getuser(id);

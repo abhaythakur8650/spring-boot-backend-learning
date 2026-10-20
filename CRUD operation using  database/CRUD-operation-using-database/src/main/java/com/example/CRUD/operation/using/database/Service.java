@@ -1,6 +1,8 @@
 package com.example.CRUD.operation.using.database;
 
 import com.example.CRUD.operation.using.database.DTO.userDTO;
+import com.example.CRUD.operation.using.database.exceptions.Usernotfoundexception;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -19,9 +21,9 @@ public class Service {
         return repository.save(user);
     }
 
-    public Optional<User> getuser(int id)
+    public User getuser(int id)
     {
-       return  repository.findById(id);
+       return  repository.findById(id).orElseThrow(() -> new Usernotfoundexception("User not found with this ID "+ id)) ;
     }
 
     public List<User> getallusers()
@@ -62,4 +64,6 @@ User existinguser=repository.findById(id).orElseThrow(()-> new RuntimeException(
         user.getEmail());
 
     }
+
+
 }
