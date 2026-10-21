@@ -5,6 +5,9 @@ import com.example.CRUD.operation.using.database.DTO.userDTO;
 import jakarta.validation.Valid;
 
 
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +16,7 @@ import java.util.Optional;
 @RestController
 public class Controller {
     private final Service service;
+    private final Logger logger= LoggerFactory.getLogger(Controller.class);
 
     public Controller(Service service)
     {
@@ -30,6 +34,7 @@ public class Controller {
     @GetMapping("/api/users")
     public List<User> getallUser()
     {
+        logger.info("fetching all users");
         return service.getallusers();
     }
 
@@ -48,7 +53,7 @@ public class Controller {
     @GetMapping("/api/users/{id}")
     public User getById(@PathVariable int id)
     {
-
+      logger.debug("fetching a user with id:"+id);
        return service.getuser(id);
     }
 
@@ -58,6 +63,7 @@ public class Controller {
 
        service.deleteall();
     }
+
 
 
 
